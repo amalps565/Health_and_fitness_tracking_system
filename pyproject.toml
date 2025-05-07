@@ -1,0 +1,28 @@
+[project]
+name = "health_and_fitness_tracking_system"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "amalps565",email = "amal.p@edstem.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4"
+dependencies = [
+    "pytest (>=8.3.5,<9.0.0)",
+    "requests (==2.12.1)",
+    "flask (>=3.1.0,<4.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "flask-jwt-extended (>=4.6.0,<5.0.0)",
+    "black (>=25.1.0,<26.0.0)",
+    "ruff (>=0.11.8,<0.12.0)",
+    "psycopg2 (>=2.9.10,<3.0.0)",
+    "flask-sqlalchemy (>=3.1.1,<4.0.0)",
+    "marshmallow (>=4.0.0,<5.0.0)",
+    "flask-marshmallow (>=1.3.0,<2.0.0)",
+    "flask-migrate (>=4.1.0,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
