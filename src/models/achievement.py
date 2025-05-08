@@ -11,3 +11,5 @@ class Achievement(db.Model):
     description = db.Column(db.String(255), nullable=True)  # Description of the achievement (optional)
     criteria = db.Column(db.String(255), nullable=False)  # Criteria to unlock the achievement
     badge_image_url = db.Column(db.String(255), nullable=True)  # URL to the badge image (optional)
+    
+    user = db.relationship("User", back_populates="achievements",secondary="user_achievements")

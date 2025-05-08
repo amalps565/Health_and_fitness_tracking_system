@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from sqlalchemy import text
 
 from .config.settings import settings
+from .controllers.user_action_controller import user_bp
 from .models import db, init_models
 from .schemas import init_schemas, ma
 
@@ -45,6 +46,7 @@ def create_app() -> Flask:
             return "DOWN"
 
     app.register_blueprint(root_blueprint)
+    app.register_blueprint(user_bp)
     
     return app
 
