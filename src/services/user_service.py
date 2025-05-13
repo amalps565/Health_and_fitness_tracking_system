@@ -7,6 +7,7 @@ from ..models.user import User
 from ..schemas.user import UserSchema
 from ..contracts.user_dto import UserDTO, UserResponseDTO
 from ..repositories.user_repository import UserRepository
+from src.repositories import user_repository
 
 logger=setup_logger(__name__)
 
@@ -50,3 +51,51 @@ class UserService:
             goals=user_dto.goals,
             health_conditions=user_dto.health_conditions
         )
+    
+    def get_all_users(self):
+        users=self.user_repository.get_all_user()
+        # user_profile=self.user_repository.get_user_profile()
+        user_dtos=[]
+        
+        for user in users:
+            user_profile= UserProfile.query.filter_by(user_id=user.id).first()
+            user_dtos.append(
+                UserResponseDTO(
+                    user_id=user.id,
+                    username=user.username,
+                    email=user.email,
+                    registration_date=user.registration_date,
+                    height=user_profile.height_cm,
+                    fitness_level=user_profile.fitness_level,
+                    goals=user_profile.goals,
+                    weight=user_profile.weight_kg,
+                    age=user_profile.age,
+                    health_conditions=user_profile.health_conditions
+
+                
+                )
+                # for user in users
+
+            )
+        return user_dtos
+    def get_user_by_id(self, user_id):
+        """
+        Get a user by ID from the database.
+        """ 
+        user=self.user_repository.get_userby_id(user_id)
+        user_profile= UserProfile.query.filter_by(user_id=user.id).first()
+        if not user_profile:
+            user_profile = None
+        return UserResponseDTO(
+            user_id=user.id,
+            username=user.username,
+            email=user.email,
+            registration_date=user.registration_date,
+            height=user_profile.height_cm,
+            fitness_level=user_profile.fitness_level,
+            goals=user_profile.goals,
+            weight=user_profile.weight_kg,
+            age=user_profile.age,
+            health_conditions=user_profile.health_conditions
+        )
+

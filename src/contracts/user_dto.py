@@ -19,18 +19,18 @@ class UserDTO:
     age: int
     health_conditions: Optional[str] = None
 
-def to_dict(self) -> Dict[str, Any]:
-    return {
-        "username": self.username,
-        "email": self.email,
-        "password": self.password,
-        "height": self.height,
-        "weight": self.weight,
-        "fitness_level": self.fitness_level,
-        "goals": self.goals,
-        "age": self.age,
-        "health_conditions": self.health_conditions,
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "username": self.username,
+            "email": self.email,
+            "password": self.password,
+            "height": self.height,
+            "weight": self.weight,
+            "fitness_level": self.fitness_level,
+            "goals": self.goals,
+            "age": self.age,
+            "health_conditions": self.health_conditions,
+        }
 @dataclass
 class UserResponseDTO:
     """
